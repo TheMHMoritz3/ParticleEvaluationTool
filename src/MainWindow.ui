@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="title">
+        <string>Daten</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QTableView" name="tableView"/>
+        </item>
+        <item>
+         <widget class="QCommandLinkButton" name="CalcualteResultsButton">
+          <property name="text">
+           <string>Auswerten</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="resultTab">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <attribute name="title">
+        <string>Auswertung</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QListView" name="listView"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDatei">
+    <property name="title">
+     <string>Datei</string>
+    </property>
+    <addaction name="actionDaten_Importieren"/>
+    <addaction name="actionDaten_Exportieren"/>
+    <addaction name="separator"/>
+    <addaction name="actionAuswertung_Speichern"/>
+    <addaction name="separator"/>
+    <addaction name="actionProjekt_Speichern"/>
+    <addaction name="actionProjekt_ffnen"/>
+    <addaction name="separator"/>
+    <addaction name="actionSchlie_en"/>
+   </widget>
+   <widget class="QMenu" name="menuAuswerten">
+    <property name="title">
+     <string>Auswerten</string>
+    </property>
+    <addaction name="actionAuswertung_neu_Starten"/>
+    <addaction name="actionDauerhaft_Auswerten"/>
+   </widget>
+   <widget class="QMenu" name="menuEinstellungen">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <addaction name="actionAuswertungseinstellungen"/>
+    <addaction name="actionProgrammeinstellungen"/>
+   </widget>
+   <widget class="QMenu" name="menuHilfe">
+    <property name="title">
+     <string>Hilfe</string>
+    </property>
+    <addaction name="actionLizenz"/>
+   </widget>
+   <addaction name="menuDatei"/>
+   <addaction name="menuAuswerten"/>
+   <addaction name="menuEinstellungen"/>
+   <addaction name="menuHilfe"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionDaten_Importieren">
+   <property name="text">
+    <string>Daten Importieren</string>
+   </property>
+  </action>
+  <action name="actionDaten_Exportieren">
+   <property name="text">
+    <string>Daten Exportieren</string>
+   </property>
+  </action>
+  <action name="actionAuswertung_Speichern">
+   <property name="text">
+    <string>Auswertung Speichern</string>
+   </property>
+  </action>
+  <action name="actionProjekt_Speichern">
+   <property name="text">
+    <string>Projekt Speichern</string>
+   </property>
+  </action>
+  <action name="actionProjekt_ffnen">
+   <property name="text">
+    <string>Projekt Öffnen</string>
+   </property>
+  </action>
+  <action name="actionSchlie_en">
+   <property name="text">
+    <string>Schließen</string>
+   </property>
+  </action>
+  <action name="actionLizenz">
+   <property name="text">
+    <string>Lizens</string>
+   </property>
+  </action>
+  <action name="actionAuswertungseinstellungen">
+   <property name="text">
+    <string>Auswertungseinstellungen</string>
+   </property>
+  </action>
+  <action name="actionProgrammeinstellungen">
+   <property name="text">
+    <string>Programmeinstellungen</string>
+   </property>
+  </action>
+  <action name="actionAuswertung_neu_Starten">
+   <property name="text">
+    <string>Auswertung Starten</string>
+   </property>
+  </action>
+  <action name="actionDauerhaft_Auswerten">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dauerhaft Auswerten</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
