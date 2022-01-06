@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>ParticleEvaluationToolClass</class>
+ <widget class="QMainWindow" name="ParticleEvaluationToolClass">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -21,7 +21,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <property name="enabled">
@@ -32,7 +32,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QTableView" name="tableView"/>
+         <widget class="QTableView" name="DataTableView"/>
         </item>
         <item>
          <widget class="QCommandLinkButton" name="CalcualteResultsButton">
@@ -43,18 +43,14 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="resultTab">
+      <widget class="QWidget" name="ResultTab">
        <property name="enabled">
         <bool>false</bool>
        </property>
        <attribute name="title">
         <string>Auswertung</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QListView" name="listView"/>
-        </item>
-       </layout>
+       <layout class="QHBoxLayout" name="horizontalLayout_2"/>
       </widget>
      </widget>
     </item>
@@ -69,97 +65,100 @@
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuDatei">
+   <widget class="QMenu" name="FileMenu">
     <property name="title">
      <string>Datei</string>
     </property>
-    <addaction name="actionDaten_Importieren"/>
-    <addaction name="actionDaten_Exportieren"/>
+    <addaction name="ActionImportData"/>
+    <addaction name="ActionExportData"/>
     <addaction name="separator"/>
-    <addaction name="actionAuswertung_Speichern"/>
+    <addaction name="ActionSaveResults"/>
     <addaction name="separator"/>
-    <addaction name="actionProjekt_Speichern"/>
-    <addaction name="actionProjekt_ffnen"/>
+    <addaction name="ActionSaveProject"/>
+    <addaction name="ActionOpenProject"/>
     <addaction name="separator"/>
-    <addaction name="actionSchlie_en"/>
+    <addaction name="ActioClose"/>
    </widget>
-   <widget class="QMenu" name="menuAuswerten">
+   <widget class="QMenu" name="ResultsMenu">
     <property name="title">
      <string>Auswerten</string>
     </property>
-    <addaction name="actionAuswertung_neu_Starten"/>
-    <addaction name="actionDauerhaft_Auswerten"/>
+    <addaction name="ActionRestartCalculation"/>
+    <addaction name="ActionContiniuslyCalculation"/>
    </widget>
-   <widget class="QMenu" name="menuEinstellungen">
+   <widget class="QMenu" name="SettingsMenu">
     <property name="title">
      <string>Einstellungen</string>
     </property>
-    <addaction name="actionAuswertungseinstellungen"/>
-    <addaction name="actionProgrammeinstellungen"/>
+    <addaction name="ActionResultSettings"/>
+    <addaction name="ActionProgrammSettings"/>
    </widget>
-   <widget class="QMenu" name="menuHilfe">
+   <widget class="QMenu" name="HelpMenu">
     <property name="title">
      <string>Hilfe</string>
     </property>
-    <addaction name="actionLizenz"/>
+    <addaction name="LicenseAction"/>
    </widget>
-   <addaction name="menuDatei"/>
-   <addaction name="menuAuswerten"/>
-   <addaction name="menuEinstellungen"/>
-   <addaction name="menuHilfe"/>
+   <addaction name="FileMenu"/>
+   <addaction name="ResultsMenu"/>
+   <addaction name="SettingsMenu"/>
+   <addaction name="HelpMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionDaten_Importieren">
+  <action name="ActionImportData">
    <property name="text">
     <string>Daten Importieren</string>
    </property>
   </action>
-  <action name="actionDaten_Exportieren">
+  <action name="ActionExportData">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Daten Exportieren</string>
    </property>
   </action>
-  <action name="actionAuswertung_Speichern">
+  <action name="ActionSaveResults">
    <property name="text">
     <string>Auswertung Speichern</string>
    </property>
   </action>
-  <action name="actionProjekt_Speichern">
+  <action name="ActionSaveProject">
    <property name="text">
     <string>Projekt Speichern</string>
    </property>
   </action>
-  <action name="actionProjekt_ffnen">
+  <action name="ActionOpenProject">
    <property name="text">
     <string>Projekt Öffnen</string>
    </property>
   </action>
-  <action name="actionSchlie_en">
+  <action name="ActioClose">
    <property name="text">
     <string>Schließen</string>
    </property>
   </action>
-  <action name="actionLizenz">
+  <action name="LicenseAction">
    <property name="text">
     <string>Lizens</string>
    </property>
   </action>
-  <action name="actionAuswertungseinstellungen">
+  <action name="ActionResultSettings">
    <property name="text">
     <string>Auswertungseinstellungen</string>
    </property>
   </action>
-  <action name="actionProgrammeinstellungen">
+  <action name="ActionProgrammSettings">
    <property name="text">
     <string>Programmeinstellungen</string>
    </property>
   </action>
-  <action name="actionAuswertung_neu_Starten">
+  <action name="ActionRestartCalculation">
    <property name="text">
     <string>Auswertung Starten</string>
    </property>
   </action>
-  <action name="actionDauerhaft_Auswerten">
+  <action name="ActionContiniuslyCalculation">
    <property name="checkable">
     <bool>true</bool>
    </property>

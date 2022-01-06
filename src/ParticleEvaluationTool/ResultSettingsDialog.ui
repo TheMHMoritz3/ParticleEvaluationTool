@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ResultSettingsDialog</class>
+ <widget class="QDialog" name="ResultSettingsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>366</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ResultSettingsDialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTableWidget" name="SettingsDataWidget">
+     <row>
+      <property name="text">
+       <string>Gesetzwert 10µ PPM Pro Tag</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Gesetzwert 10µ PPM Pro Jahr</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Gesetzwert 2,5µ PPM Pro Tag</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Gesetzwert 2,5µ PPM Pro Jahr</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Anzahl Tage Nach Gesetz</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>WHO Wert 10µ PPM Pro Tag</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>WHO Wert 10µ PPM Pro Jahr</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>WHO Wert 2,5µ PPM Pro Tag</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>WHO Wert 2,5µ PPM Pro Jahr</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Wert</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
