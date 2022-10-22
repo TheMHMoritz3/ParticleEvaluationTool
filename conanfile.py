@@ -18,14 +18,17 @@ class ParticleEvaluationToolConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": True, "fPIC": True}
 
-    requires = "qt/6.2.2"
+    requires = [ "qt/6.3.1"]
+            
 
     def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
 
-    # def requirements(self):
-    #     self.options["qt"].qtcharts = True
+    def build_requirements(self):
+        self.build_requires("cmake/3.23.2")
+        #if self._meson_supported():
+            #self.build_requires("meson/0.60.2")
 
     def _configure_cmake(self):
         self.output.info("Building with cmake_find_package_multi")
@@ -39,7 +42,8 @@ class ParticleEvaluationToolConan(ConanFile):
 
             cmake.configure()
         return cmake
-
+    
+    
     def build(self):
         cmake = self._configure_cmake()
         cmake.build()

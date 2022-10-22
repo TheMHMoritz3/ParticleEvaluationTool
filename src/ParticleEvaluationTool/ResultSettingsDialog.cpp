@@ -12,7 +12,6 @@ ResultSettingsDialog::ResultSettingsDialog(std::shared_ptr<Model::EvaluationSett
 
 void ResultSettingsDialog::decorateGuiWithValues()
 {
-	qDebug() << ui.SettingsDataWidget->rowCount();
 	ui.SettingsDataWidget->setItem(0, 0, new QTableWidgetItem(tr("%1").arg(Settings->ppm10LawViolationValueDay())));
 	ui.SettingsDataWidget->setItem(1, 0, new QTableWidgetItem(tr("%1").arg(Settings->ppm10LawViolationValueYear())));
 	ui.SettingsDataWidget->setItem(2, 0, new QTableWidgetItem(tr("%1").arg(Settings->ppm25LawViolationValueDay())));

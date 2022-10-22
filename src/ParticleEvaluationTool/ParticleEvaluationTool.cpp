@@ -15,11 +15,12 @@ ParticleEvaluationTool::ParticleEvaluationTool(QWidget *parent)
         openResultSettings();
 
     ui.DataTableView->setModel(Controller->getModel().get());
+    ui.ResultsTable->setModel(Controller->getEvaluation());
 }
 
 void ParticleEvaluationTool::openDataFolderForProject()
 {
-    auto data = QFileDialog::getOpenFileNames(this,tr("Opens the Datafiles"), QDir::currentPath(), "Textfiles *.txt;;Binaryfiles *.bin", nullptr);
+    auto data = QFileDialog::getOpenFileNames(this,tr("Opens the Datafiles"), QDir::currentPath(), "Textfiles (*.txt);;Binaryfiles (*.bin)",nullptr);
 	
     Controller->importData(data);
 }
@@ -30,6 +31,7 @@ void ParticleEvaluationTool::makeConnections()
     connect(ui.ActionImportData, &QAction::triggered, this, &ParticleEvaluationTool::openDataFolderForProject);
     connect(ui.ActionSaveProject, &QAction::triggered, this, &ParticleEvaluationTool::saveProjectAsXML);
     connect(ui.ActionOpenProject, &QAction::triggered, this, &ParticleEvaluationTool::openProjectInXML);
+    connect(ui.CalcualteResultsButton, &QPushButton::clicked,this,&ParticleEvaluationTool::evaluate);
 }
 
 void ParticleEvaluationTool::openResultSettings()
@@ -47,4 +49,8 @@ void ParticleEvaluationTool::saveProjectAsXML()
 void ParticleEvaluationTool::openProjectInXML()
 {
     QFileDialog::getOpenFileName();
+}
+
+void ParticleEvaluationTool::evaluate() {
+    Controller->evaluate();
 }

@@ -2,7 +2,9 @@
 
 #include <QFile>
 #include <vector>
+#include <string>
 #include <QStringList>
+#include <QDate>
 #include "ParticleDataSet.h"
 #include "MeasuringType.h"
 
@@ -17,15 +19,16 @@ namespace Model
 			DatasetParser() = delete;
 			~DatasetParser() = delete;
 
-			std::vector<ParticleDataSet> parseTextDataSet(QStringList fileList);
+			static std::vector<ParticleDataSet*> parseTextDataSet(QStringList fileList);
 
 		private:
-			static MeasuringType parseMeasureingType(QString firstLine);
+			static MeasuringType parseMeasureingType(std::string firstLine);
 
-			static ParticleDataSet parseMassConzentration(QFile& file);
-			static ParticleDataSet parseConcentration(QFile& file);
-			static ParticleDataSet parseCumulative(QFile& file);
+			static ParticleDataSet* parseMassConzentration(QFile& file, ParticleDataSet* input);
+			static ParticleDataSet* parseConcentration(QFile& file, ParticleDataSet* input);
+			static ParticleDataSet* parseCumulative(QFile& file, ParticleDataSet* input);
 			
+			static QDate* parseDate(QString filepath);
 		};
 	}
 }

@@ -1,21 +1,10 @@
-project(ParticleEvaluationToolModel CXX)
-
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_set_vs_runtime()
-conan_set_libcxx()
-conan_output_dirs_setup()
-
-find_package(Qt6 COMPONENTS Core Network Sql Concurrent Xml Widgets REQUIRED CONFIG)
-
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
 
 set(SOURCES DatasetParser.cpp
         EvaluationSettings.cpp
         ParticleDataSet.cpp
         ParticleEvaluationController.cpp
         PartilcleEvaluationModel.cpp
+        StringUtitlities.cpp
 
         DatasetParser.h
         EvaluationSettings.h
@@ -23,7 +12,8 @@ set(SOURCES DatasetParser.cpp
         ParticleDataSet.h
         ParticleEvaluationController.h
         PartilcleEvaluationModel.h
-        partilcleevaluationmodel_global.h)
+        StringUtitlities.h
+        partilcleevaluationmodel_global.h ParticleEvaluator.cpp ParticleEvaluator.h EvaluationDataPoint.cpp EvaluationDataPoint.h)
 
 #qt_wrap_ui(${PROJECT_NAME} src/MainWindow.ui)
 

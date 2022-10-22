@@ -30,5 +30,6 @@ private slots:
     void openResultSettings();
     void saveProjectAsXML();
     void openProjectInXML();
+    void evaluate();
 
 };

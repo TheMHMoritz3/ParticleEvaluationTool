@@ -22,12 +22,15 @@ namespace Model {
 
     	QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 
-        void setParticleDataSet(std::vector<ParticleDataSet> particleData);
+        void setParticleDataSet(std::vector<ParticleDataSet*> particleData);
+
+        std::vector<ParticleDataSet*> getData();
     private:
 
         QVariant getDataFromIndex(QModelIndex) const;
+        QVariant getColorDependedOnValue(QModelIndex) const;
         std::shared_ptr<Model::EvaluationSettings> Settings;
-        std::vector<ParticleDataSet> DataSet;
+        std::vector<ParticleDataSet*> DataSet;
     	
     };
 }
