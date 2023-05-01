@@ -1,5 +1,6 @@
 #include "ParticleEvaluationTool.h"
 #include "ResultSettingsDialog.h"
+#include "SettingsDialog.h"
 
 #include <QFileDialog>
 
@@ -32,13 +33,13 @@ void ParticleEvaluationTool::makeConnections()
     connect(ui.ActionSaveProject, &QAction::triggered, this, &ParticleEvaluationTool::saveProjectAsXML);
     connect(ui.ActionOpenProject, &QAction::triggered, this, &ParticleEvaluationTool::openProjectInXML);
     connect(ui.CalcualteResultsButton, &QPushButton::clicked,this,&ParticleEvaluationTool::evaluate);
+    connect(ui.ActionProgrammSettings, &QAction::triggered, this, &ParticleEvaluationTool::openSettings);
 }
 
 void ParticleEvaluationTool::openResultSettings()
 {
-    auto dialog = std::make_unique<ResultSettingsDialog>(Controller->getSettings(), this);
-    dialog->decorateGuiWithValues();
-    dialog->exec();
+    SettignsDialog dialog(Controller->getSettings(), this);
+    dialog.exec();
 }
 
 void ParticleEvaluationTool::saveProjectAsXML()
@@ -53,4 +54,10 @@ void ParticleEvaluationTool::openProjectInXML()
 
 void ParticleEvaluationTool::evaluate() {
     Controller->evaluate();
+}
+
+void ParticleEvaluationTool::openSettings() {
+    SettignsDialog dialog(Controller->getSettings(), this);
+    dialog.openPageTwo();
+    dialog.exec();
 }

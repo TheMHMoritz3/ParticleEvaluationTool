@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake, tools, RunEnvironment
+from conans import ConanFile, tools, CMake, RunEnvironment
 import os
 
 
@@ -18,8 +18,11 @@ class ParticleEvaluationToolConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": True, "fPIC": True}
 
-    requires = [ "qt/6.3.1"]
-            
+    requires = ["qt/6.3.1",
+                "libcurl/7.85.0",
+                "openssl/1.1.1q",
+                "zlib/1.2.12"]
+
 
     def config_options(self):
         if self.settings.os == 'Windows':
@@ -27,8 +30,6 @@ class ParticleEvaluationToolConan(ConanFile):
 
     def build_requirements(self):
         self.build_requires("cmake/3.23.2")
-        #if self._meson_supported():
-            #self.build_requires("meson/0.60.2")
 
     def _configure_cmake(self):
         self.output.info("Building with cmake_find_package_multi")

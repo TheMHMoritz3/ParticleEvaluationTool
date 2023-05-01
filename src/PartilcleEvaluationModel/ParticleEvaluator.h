@@ -22,6 +22,7 @@ namespace Model {
 
         std::vector<EvaluationDataPoint> getEvaluationData();
     private:
+        void evaluateAllOfQuantile(std::vector<ParticleDataSet *>);
         void calculateHighestDate();
         void calculateLowesDate();
 
@@ -29,7 +30,7 @@ namespace Model {
         void searchForBestQuantile();
 
         QDate LowestDate;
-        QDate HighestDate;
+        QDate HighestDate=QDate(2000,1,1);
         long DistanceBetweenDates;
 
         std::vector<EvaluationDataPoint> EvaluationData;

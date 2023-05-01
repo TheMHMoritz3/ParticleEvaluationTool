@@ -14,6 +14,8 @@ Model::ParticleEvaluationController::ParticleEvaluationController()
     headerData.append(QObject::tr("Days of 2.5 ppm too high"));
     headerData.append(QObject::tr("Average 10 ppm"));
     headerData.append(QObject::tr("Days of 10 ppm too high"));
+    headerData.append(QObject::tr("Begin"));
+    headerData.append(QObject::tr("End"));
     EvaluationResults->setHorizontalHeaderLabels(headerData);
 }
 
@@ -60,6 +62,8 @@ void Model::ParticleEvaluationController::evaluate() {
         newRow.append(new QStandardItem(QObject::tr("%1").arg(evaluationPoint.getDays25PPMTooHigh())));
         newRow.append(new QStandardItem(QObject::tr("%1").arg(evaluationPoint.getAverage100PPM())));
         newRow.append(new QStandardItem(QObject::tr("%1").arg(evaluationPoint.getDays100PPMTooHigh())));
+        newRow.append(new QStandardItem(evaluationPoint.sampleBegin().toString(Qt::DateFormat::ISODate)));
+        newRow.append(new QStandardItem(evaluationPoint.sampleEnd().toString(Qt::DateFormat::ISODate)));
         EvaluationResults->appendRow(newRow);
     }
 }

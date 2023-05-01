@@ -3,13 +3,16 @@ project(ParticleEvaluationTool CXX)
 set(SOURCES main.cpp
         ParticleEvaluationTool.cpp
         ResultSettingsDialog.cpp
-
+        
         ParticleEvaluationTool.h
         ResultSettingsDialog.h
 
+        SettingsDialog.h
+        SettingsDialog.cpp
+
         ParticleEvaluationTool.ui
-        ParticleEvaluationTool_.ui
         ResultSettingsDialog.ui
+        SettingsDialog.ui
 
         ParticleEvaluationTool.qrc)
 

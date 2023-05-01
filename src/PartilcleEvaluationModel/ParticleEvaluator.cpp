@@ -21,27 +21,15 @@ namespace Model {
     }
 
     void ParticleEvaluator::calculateHighestDate() {
-        QDate date = DataSet.at(0)->recordingDate();
-        for(auto dataPoint : DataSet)
-        {
-            if(dataPoint->recordingDate()>date)
-            {
-                date = dataPoint->recordingDate();
-            }
-        }
-        HighestDate = date;
+        std::sort(DataSet.begin(),DataSet.end(),[](ParticleDataSet* i, ParticleDataSet* j){
+           return i->recordingDate()<j->recordingDate();
+        });
+
+        LowestDate = DataSet.front()->recordingDate();
+        HighestDate = DataSet.back()->recordingDate();
     }
 
     void ParticleEvaluator::calculateLowesDate() {
-        QDate date = DataSet.at(0)->recordingDate();
-        for(auto dataPoint : DataSet)
-        {
-            if(dataPoint->recordingDate()<date)
-            {
-                date = dataPoint->recordingDate();
-            }
-        }
-        LowestDate = date;
     }
 
     void ParticleEvaluator::evaluateOneYear() {
@@ -75,7 +63,7 @@ namespace Model {
         if ((double) average25ppm>=EvalSettings->ppm25LawViolationValueYear())
             reason = reason | SueingReason::PPM25_TOO_HIGH;
 
-        EvaluationDataPoint evaluationDataPoint(average25ppm,numberOfDays25ppmToHigh,average100ppm,numberOfDays100ppmToHigh, reason);
+        EvaluationDataPoint evaluationDataPoint(average25ppm,numberOfDays25ppmToHigh,average100ppm,numberOfDays100ppmToHigh, reason, LowestDate, HighestDate);
         EvaluationData.push_back(evaluationDataPoint);
     }
 
@@ -85,7 +73,7 @@ namespace Model {
         {
             qDebug()<<"Quantiles Size: "<<quantile.size();
             ParticleEvaluator evaluator(EvalSettings);
-            evaluator.evaluate(quantile);
+            evaluator.evaluateAllOfQuantile(quantile);
             EvaluationData.push_back(evaluator.EvaluationData.at(0));
         }
     }
@@ -94,27 +82,29 @@ namespace Model {
         return EvaluationData;
     }
 
-    std::vector<std::vector<ParticleDataSet *>> ParticleEvaluator::calculateQuantiles(QDate lowestDate) {
+    std::vector<std::vector<ParticleDataSet *>> ParticleEvaluator::calculateQuantiles(QDate) {
         std::vector<std::vector<ParticleDataSet *>> dataset;
-        while(HighestDate>=lowestDate.addYears(1)) {
 
+        for (int i = 0; i<DataSet.size(); i++)
+        {
+            QDate newLowestDate = DataSet[i]->recordingDate();
             std::vector<ParticleDataSet *> appendedValue;
-            QDate newHighestDate = lowestDate.addYears(1);
+            QDate newHighestDate = newLowestDate.addYears(1);
             for (auto datapoint: DataSet) {
-                if ((lowestDate <= datapoint->recordingDate()) && (newHighestDate >= datapoint->recordingDate()))
+                if ((newLowestDate <= datapoint->recordingDate()) && (newHighestDate > datapoint->recordingDate()))
                     appendedValue.push_back(datapoint);
             }
-
-            for (auto datapoint: DataSet) {
-                if (lowestDate < datapoint->recordingDate()) {
-                    lowestDate = datapoint->recordingDate();
-                    break;
-                }
-            }
-            qDebug()<<"New Lowest Date: "<<lowestDate;
             dataset.push_back(appendedValue);
         }
 
         return dataset;
+    }
+
+    void ParticleEvaluator::evaluateAllOfQuantile(std::vector<ParticleDataSet *> dataSet) {
+        DataSet = dataSet;
+        calculateHighestDate();
+        calculateLowesDate();
+        DistanceBetweenDates = LowestDate.daysTo(HighestDate);
+        evaluateOneYear();
     }
 } // Model

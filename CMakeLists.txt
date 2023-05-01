@@ -18,9 +18,9 @@ conan_set_vs_runtime()
 conan_set_libcxx()
 conan_output_dirs_setup()
 
-find_package(Qt6 COMPONENTS Core Network Sql Concurrent Xml Widgets REQUIRED CONFIG)
+list(APPEND CMAKE_PREFIX_PATH "C:/Qt/6.3.2/msvc2019_64")
 
-#list(APPEND CMAKE_PREFIX_PATH "/home/moritzh/.conan/data/qt/6.3.1/_/_/package/bfe7d3177b8c488e08e6d101ad9e037709eeaf26/lib/cmake/Qt6")
+find_package(Qt6 COMPONENTS Core Network Sql Concurrent Xml Widgets REQUIRED CONFIG)
 
 #find_package(Qt6 COMPONENTS Core Network Sql Concurrent Xml Widgets REQUIRED CONFIG)
 

@@ -102,5 +102,11 @@ QDate* Model::Parser::DatasetParser::parseDate(QString filepath) {
 	std::vector<std::string> date = Model::Utilities::StringUtitlities::splitStrings('-', filenamePaths[0]);
 	return new QDate(std::stoi(date[2]),std::stoi(date[0]),std::stoi(date[1]));
 #else
+	std::vector<std::string> pathparts = Model::Utilities::StringUtitlities::splitStrings('/', filepath.toStdString());
+	std::string filename = pathparts.at(pathparts.size() - 1);
+	std::vector<std::string> filenamePaths = Model::Utilities::StringUtitlities::splitStrings('.', filename);
+	std::vector<std::string> datePaths = Model::Utilities::StringUtitlities::splitStrings(' ', filenamePaths[0]);
+	std::vector<std::string> date = Model::Utilities::StringUtitlities::splitStrings('-', filenamePaths[0]);
+	return new QDate(std::stoi(date[2]), std::stoi(date[0]), std::stoi(date[1]));
 #endif
 }

@@ -1,12 +1,12 @@
 #pragma once
 
-#include <QDialog>
+#include <QWidget>
 #include "ui_ResultSettingsDialog.h"
 #include "../PartilcleEvaluationModel/EvaluationSettings.h"
 #include <memory>
 
 
-class ResultSettingsDialog : public QDialog
+class ResultSettingsDialog : public QWidget
 {
 	Q_OBJECT
 
@@ -21,7 +21,6 @@ private:
 	std::shared_ptr<Model::EvaluationSettings> Settings;
 	Ui::ResultSettingsDialog ui;
 
-private slots:
+public slots:
 	void onDialogAccepted();
-	void onDialogRejected();
 };

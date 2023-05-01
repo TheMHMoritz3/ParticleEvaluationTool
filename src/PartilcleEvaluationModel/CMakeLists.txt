@@ -13,7 +13,11 @@ set(SOURCES DatasetParser.cpp
         ParticleEvaluationController.h
         PartilcleEvaluationModel.h
         StringUtitlities.h
-        partilcleevaluationmodel_global.h ParticleEvaluator.cpp ParticleEvaluator.h EvaluationDataPoint.cpp EvaluationDataPoint.h)
+        partilcleevaluationmodel_global.h
+        ParticleEvaluator.cpp 
+        ParticleEvaluator.h 
+        EvaluationDataPoint.cpp
+        EvaluationDataPoint.h ConnectionUtilities.cpp ConnectionUtilities.h)
 
 #qt_wrap_ui(${PROJECT_NAME} src/MainWindow.ui)
 

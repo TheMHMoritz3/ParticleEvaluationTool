@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>ResultSettingsDialog</class>
- <widget class="QDialog" name="ResultSettingsDialog">
+ <widget class="QWidget" name="ResultSettingsDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -66,13 +66,6 @@
        <string>Wert</string>
       </property>
      </column>
-    </widget>
-   </item>
-   <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
     </widget>
    </item>
   </layout>

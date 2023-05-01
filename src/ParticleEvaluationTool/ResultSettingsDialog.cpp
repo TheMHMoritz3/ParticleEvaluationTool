@@ -3,7 +3,7 @@
 #include <QDebug>
 
 ResultSettingsDialog::ResultSettingsDialog(std::shared_ptr<Model::EvaluationSettings> settings, QWidget *parent)
-	: QDialog(parent),
+	: QWidget(parent),
 	Settings(settings)
 {
 	ui.setupUi(this);
@@ -25,8 +25,8 @@ void ResultSettingsDialog::decorateGuiWithValues()
 
 void ResultSettingsDialog::makeConnections()
 {
-	connect(ui.buttonBox, &QDialogButtonBox::accepted, this, &ResultSettingsDialog::onDialogAccepted);
-	connect(ui.buttonBox, &QDialogButtonBox::rejected, this, &ResultSettingsDialog::onDialogRejected);
+//	connect(ui.buttonBox, &QDialogButtonBox::accepted, this, &ResultSettingsDialog::onDialogAccepted);
+//	connect(ui.buttonBox, &QDialogButtonBox::rejected, this, &ResultSettingsDialog::onDialogRejected);
 }
 
 void ResultSettingsDialog::onDialogAccepted()
@@ -42,11 +42,4 @@ void ResultSettingsDialog::onDialogAccepted()
 	Settings->setPpm25WHOViolationPerYear(ui.SettingsDataWidget->item(8, 0)->text().toDouble());
 
 	Settings->updateSettings();
-
-	accept();
-}
-
-void ResultSettingsDialog::onDialogRejected()
-{
-	reject();
 }

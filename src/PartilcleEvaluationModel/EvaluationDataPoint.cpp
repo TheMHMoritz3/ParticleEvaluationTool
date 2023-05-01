@@ -6,12 +6,14 @@
 
 namespace Model {
     EvaluationDataPoint::EvaluationDataPoint(double average25ppm, unsigned int days25ppm, double average100ppm,
-                                             unsigned int days100ppm, uint8_t reason) {
+                                             unsigned int days100ppm, uint8_t reason, QDate sampleBegin, QDate sampleEnd) {
         Reason=reason;
         Average25ppm = average25ppm;
         Average100PPM = average100ppm;
         Days25PPMTooHigh = days25ppm;
         Days100PPMTooHigh = days100ppm;
+        SampleBegin=sampleBegin;
+        SampleEnd=sampleEnd;
     }
 
     uint8_t EvaluationDataPoint::getReason() {
@@ -32,6 +34,14 @@ namespace Model {
 
     unsigned EvaluationDataPoint::getDays100PPMTooHigh() {
         return Days100PPMTooHigh;
+    }
+
+    QDate EvaluationDataPoint::sampleBegin() {
+        return SampleBegin;
+    }
+
+    QDate EvaluationDataPoint::sampleEnd() {
+        return SampleEnd;
     }
 
 

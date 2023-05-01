@@ -6,6 +6,7 @@
 #define CONANFILE_PY_EVALUATIONDATAPOINT_H
 
 #include <cstdint>
+#include <QDate>
 
 namespace Model {
 
@@ -19,7 +20,7 @@ namespace Model {
     class EvaluationDataPoint {
     public:
         EvaluationDataPoint()=delete;
-        EvaluationDataPoint(double average25ppm, unsigned days25ppm, double average100ppm, unsigned days100ppm, uint8_t reason);
+        EvaluationDataPoint(double average25ppm, unsigned days25ppm, double average100ppm, unsigned days100ppm, uint8_t reason, QDate sampleBegin, QDate sampleEnd);
         ~EvaluationDataPoint()=default;
 
         uint8_t getReason();
@@ -27,12 +28,17 @@ namespace Model {
         unsigned getDays25PPMTooHigh();
         double getAverage100PPM();
         unsigned getDays100PPMTooHigh();
+        QDate sampleBegin();
+        QDate sampleEnd();
 
     private:
         double Average25ppm;
         unsigned Days25PPMTooHigh;
         double Average100PPM;
         unsigned Days100PPMTooHigh;
+
+        QDate SampleBegin;
+        QDate SampleEnd;
 
         uint8_t Reason = 0;
     };
